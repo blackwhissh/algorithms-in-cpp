@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int A[11] = {1, 0, 3, 2, 4, 7, 5, 9, 8, 11, 2};
+int B[100];
+int C[100];
+int Mx, indexMax, Max1, p, k, j;
+
+
+int main(){
+	
+	for(int i = 1; i <= 10; i++){
+		B[i] = 0;
+	}
+	C[0] = -1;
+	B[0] = 1;
+	Mx = 1;
+	indexMax = 1;
+	
+	for(int i = 1; i <= 10; i++){
+		Max1 = 0;
+		p = 0;
+		for(k = 0; k<=i-1; k++){
+			if(A[k] < A[i] && Max1 < B[k]){
+				Max1 = B[k];
+				p = k;
+			}
+			C[i] = p;
+			B[i] = Max1 + 1;
+			if(B[i] > Mx){
+				Mx = B[i];
+				indexMax = i;
+			}
+		}
+	}
+	
+	
+	j = indexMax;
+	cout << B[j] << endl;
+	
+	while(j!=-1){
+		cout << A[j] << " ";
+		j = C[j];
+	}
+	
+	
+	
+	
+	return 0;
+}
