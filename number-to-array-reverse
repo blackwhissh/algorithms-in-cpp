@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+//Reversed
+
+int main(){
+	
+	int n; //given number
+	int B[1000]; //Array to store numbers
+	int k = -1; //Index of the Array
+	
+	cin >> n;
+	
+	while(n >= 1){
+		k++;
+		B[k] = n%10;
+		n = n/10;
+	}
+	
+	for(int i = 0; i <= k; i++){
+		cout << B[i] << " ";
+	}
+	
+	cout << endl;
+	
+	//Build number 
+	
+	int a = 0; //number to build
+	
+	int r = 1; //multiplier
+	
+	for(int i = 0; i <= k; i++){
+		a = a + B[i]*r;
+		r*=10;
+	}
+	
+	cout << a;
+	
+	return 0;
+}
